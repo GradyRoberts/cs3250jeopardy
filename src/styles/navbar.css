@@ -1,24 +1,24 @@
 
-/*NavBar Customizations*/
- /* Modify the background color */ 
- .navbar-custom {
+/* Modify the background color */ 
+.navbar-custom {
     background-color: #eecc6f;
 	border-color: black;
 	border-width: 2px;
 }
+
 /* change the brand and text color */
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-text {
     color: rgba(9, 46, 170, 0.8);
 }
+
 /* change the link color */
 .navbar-custom .navbar-nav .nav-link {
     color: rgba(9, 46, 170, 0.8);
 }
+
 /* change the color of active or hovered links */
 .navbar-custom .nav-item.active .nav-link,
 .navbar-custom .nav-item:hover .nav-link {
     color: #ffffff;
 }
-
-/*End of Nav-Bar CSS*/
