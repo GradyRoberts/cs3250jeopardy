@@ -38,17 +38,17 @@
       <div class="col-lg d-flex justify-content-center text-center column">
         <img style="margin: auto" src="img/image-placeholder.png" width="250" height="250" alt="placeholder"/>
         <h4>Column 1</h4>
-        <p>Column Text and stuff</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec ligula non diam molestie aliquet. Etiam dui metus, porttitor et placerat quis, hendrerit et sapien. Sed scelerisque neque a odio pharetra hendrerit. Curabitur laoreet sit amet dolor ut dignissim.</p>
       </div>
       <div class="col-lg d-flex justify-content-center text-center column">
         <img style="margin: auto" src="img/image-placeholder.png" width="250" height="250" alt="placeholder"/>
         <h4>Column 2</h4>
-        <p>Column Text and stuff</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec ligula non diam molestie aliquet. Etiam dui metus, porttitor et placerat quis, hendrerit et sapien. Sed scelerisque neque a odio pharetra hendrerit. Curabitur laoreet sit amet dolor ut dignissim.</p>
       </div>
       <div class="col-lg d-flex justify-content-center text-center column">
         <img style="margin: auto" src="img/image-placeholder.png" width="250" height="250" alt="placeholder"/>
         <h4>Column 3</h4>
-        <p>Column Text and stuff</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec ligula non diam molestie aliquet. Etiam dui metus, porttitor et placerat quis, hendrerit et sapien. Sed scelerisque neque a odio pharetra hendrerit. Curabitur laoreet sit amet dolor ut dignissim.</p>
       </div>
     </div>
   </div>
