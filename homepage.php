@@ -24,29 +24,28 @@
 
   <!-- 3. link bootstrap -->
   <!-- CSS only -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
   <!-- 3. Style Sheets -->
   <link rel="stylesheet" href="styles/home.css" />
 </head>
 
-<body class="main-content"
-  <?php include("header.html")?>
+<body class="main-content"> 
+  <?php include("header.html") ?>
   <div class="container">
     <div class="row">
       <div class="col-lg d-flex justify-content-center text-center column">
-        <img style="margin: auto" src="img/image-placeholder.png" width="250" height="250" alt="placeholder"/>
+        <img style="margin: auto" src="img/image-placeholder.png" width="250" height="250" alt="placeholder" />
         <h4>Column 1</h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec ligula non diam molestie aliquet. Etiam dui metus, porttitor et placerat quis, hendrerit et sapien. Sed scelerisque neque a odio pharetra hendrerit. Curabitur laoreet sit amet dolor ut dignissim.</p>
       </div>
       <div class="col-lg d-flex justify-content-center text-center column">
-        <img style="margin: auto" src="img/image-placeholder.png" width="250" height="250" alt="placeholder"/>
+        <img style="margin: auto" src="img/image-placeholder.png" width="250" height="250" alt="placeholder" />
         <h4>Column 2</h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec ligula non diam molestie aliquet. Etiam dui metus, porttitor et placerat quis, hendrerit et sapien. Sed scelerisque neque a odio pharetra hendrerit. Curabitur laoreet sit amet dolor ut dignissim.</p>
       </div>
       <div class="col-lg d-flex justify-content-center text-center column">
-        <img style="margin: auto" src="img/image-placeholder.png" width="250" height="250" alt="placeholder"/>
+        <img style="margin: auto" src="img/image-placeholder.png" width="250" height="250" alt="placeholder" />
         <h4>Column 3</h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec ligula non diam molestie aliquet. Etiam dui metus, porttitor et placerat quis, hendrerit et sapien. Sed scelerisque neque a odio pharetra hendrerit. Curabitur laoreet sit amet dolor ut dignissim.</p>
       </div>
