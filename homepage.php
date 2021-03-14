@@ -31,30 +31,24 @@
   <link rel="stylesheet" href="styles/home.css" />
 </head>
 
-<body>
+<body class="main-content"
   <?php include("header.html")?>
   <div class="container">
     <div class="row">
-      <div class="col-sm d-flex justify-content-center text-center">
-        <img src="img/image-placeholder.png" width="250" height="250" alt="placeholder"/>
+      <div class="col-lg d-flex justify-content-center text-center column">
+        <img style="margin: auto" src="img/image-placeholder.png" width="250" height="250" alt="placeholder"/>
+        <h4>Column 1</h4>
+        <p>Column Text and stuff</p>
       </div>
-      <div class="col-sm d-flex justify-content-center text-center">
-        <img src="img/image-placeholder.png" width="250" height="250" alt="placeholder"/>
+      <div class="col-lg d-flex justify-content-center text-center column">
+        <img style="margin: auto" src="img/image-placeholder.png" width="250" height="250" alt="placeholder"/>
+        <h4>Column 2</h4>
+        <p>Column Text and stuff</p>
       </div>
-      <div class="col-sm d-flex justify-content-center text-center">
-        <img src="img/image-placeholder.png" width="250" height="250" alt="placeholder"/>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm d-flex justify-content-center text-center">
-        <p>Column</p>
-      </div>
-      <div class="col-sm d-flex justify-content-center text-center">
-        <p>Column</p>
-      </div>
-      <div class="col-sm d-flex justify-content-center text-center">
-        <p>Column</p>
+      <div class="col-lg d-flex justify-content-center text-center column">
+        <img style="margin: auto" src="img/image-placeholder.png" width="250" height="250" alt="placeholder"/>
+        <h4>Column 3</h4>
+        <p>Column Text and stuff</p>
       </div>
     </div>
   </div>
