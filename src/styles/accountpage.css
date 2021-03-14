@@ -1,0 +1,32 @@
+/* Styles for home page */
+.column{
+    flex-direction: column;
+    align-items:inherit;
+}
+
+div h4{
+    border: 2px;
+    border-color: black;
+    border-style: solid;
+    border: auto;
+    background-color: blue;
+    color: gold;
+}
+
+div.accountbox{
+    border: 2px;
+    border-color: black;
+    border-style: solid;
+    border: auto;
+    background-color: rgb(226, 226, 226);
+}
+
+div p{
+    text-align: left;
+    margin-left: 5%;
+
+}
+
+.main-content {
+    background-color: #fff3d1;
+}

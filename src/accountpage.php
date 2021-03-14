@@ -27,7 +27,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
   <!-- 3. Style Sheets -->
-  <link rel="stylesheet" href="styles/home.css" />
+  <link rel="stylesheet" href="styles/accountpage.css" />
 </head>
 
 <body class="main-content">
@@ -36,18 +36,28 @@
     <div class="row">
       <div class="col-lg d-flex justify-content-center text-center column">
         <img style="margin: auto" src="img/image-placeholder.png" width="250" height="250" alt="placeholder" />
-        <h4>Column 1</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec ligula non diam molestie aliquet. Etiam dui metus, porttitor et placerat quis, hendrerit et sapien. Sed scelerisque neque a odio pharetra hendrerit. Curabitur laoreet sit amet dolor ut dignissim.</p>
+        <div class="accountbox">
+          <h4>Account Information</h4>
+          <p><b>First Name:</b> </p>
+          <p><b>Last Name:</b> </p>
+          <p><b>Email:</b> </p>
+          <p><b>Password:</b> </p>
+        </div>
       </div>
       <div class="col-lg d-flex justify-content-center text-center column">
-        <img style="margin: auto" src="img/image-placeholder.png" width="250" height="250" alt="placeholder" />
-        <h4>Column 2</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec ligula non diam molestie aliquet. Etiam dui metus, porttitor et placerat quis, hendrerit et sapien. Sed scelerisque neque a odio pharetra hendrerit. Curabitur laoreet sit amet dolor ut dignissim.</p>
+        <div class="accountbox">
+          <h4>Your Games</h4>
+        </div>
       </div>
       <div class="col-lg d-flex justify-content-center text-center column">
-        <img style="margin: auto" src="img/image-placeholder.png" width="250" height="250" alt="placeholder" />
-        <h4>Column 3</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec ligula non diam molestie aliquet. Etiam dui metus, porttitor et placerat quis, hendrerit et sapien. Sed scelerisque neque a odio pharetra hendrerit. Curabitur laoreet sit amet dolor ut dignissim.</p>
+        <div class="accountbox">
+          <h4>Your Questions</h4>
+        </div>
+      </div>
+      <div class="col-lg d-flex justify-content-center text-center column">
+        <div class="accountbox">
+          <h4>Add Questions</h4>
+        </div>
       </div>
     </div>
   </div>
