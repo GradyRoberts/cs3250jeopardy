@@ -27,25 +27,37 @@
     integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
   <!-- 3. Style Sheet for NavBar -->
-  <link rel="stylesheet" href="styles/navbar.css" />
+  <link rel="stylesheet" href="styles/home.css" />
 </head>
 
 <body>
   <?php include("header.html")?>
-  <div class="container" align="center">
+  <div class="container">
     <div class="row">
-      <div class="col-sm">
+      <div class="col-sm d-flex justify-content-center text-center">
         <img src="img/image-placeholder.png" width="250" height="250" alt="placeholder"/>
-        Column 1
       </div>
-      <div class="col-sm">
+      <div class="col-sm d-flex justify-content-center text-center">
         <img src="img/image-placeholder.png" width="250" height="250" alt="placeholder"/>
-        Column 2
       </div>
-      <div class="col-sm">
+      <div class="col-sm d-flex justify-content-center text-center">
         <img src="img/image-placeholder.png" width="250" height="250" alt="placeholder"/>
-        Column 3
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm d-flex justify-content-center text-center">
+        <p>Column</p>
+      </div>
+      <div class="col-sm d-flex justify-content-center text-center">
+        <p>Column</p>
+      </div>
+      <div class="col-sm d-flex justify-content-center text-center">
+        <p>Column</p>
       </div>
     </div>
   </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 </body>
