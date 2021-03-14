@@ -1,12 +1,12 @@
 # Use the PHP 7.3 runtime by replacing "php72" below with "php73"
 runtime: php73
 
-entrypoint: serve loginpage.php
+entrypoint: serve src/loginpage.php
 
 handlers:
-- url: /*
-  static_dir: .
+- url: /
+  static_dir: src
 - url: /styles/*
-  static_dir: styles
+  static_dir: src/styles
 - url: /img/*
-  static_dir: img
+  static_dir: src/img
