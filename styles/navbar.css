@@ -1,10 +1,11 @@
 
 /*NavBar Customizations*/
  /* Modify the background color */  
- .navbar-custom {
+ .navbar-custom{
     background-color: #eecc6f;
 	border-color: black;
 	border-width: 2px;
+    margin: 0 0 10px 0;
 }
 /* change the brand and text color */
 .navbar-custom .navbar-brand,

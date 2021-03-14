@@ -2,48 +2,55 @@
 
 <head>
     <link rel="stylesheet" href="styles/reset.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/navbar.css" />
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-md navbar-custom">
-            <a class="navbar-brand" href="#">Your logo / company name</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">Services</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown01">
-                            <a class="dropdown-item" href="#">Design</a>
-                            <a class="dropdown-item" href="#">Development</a>
-                            <a class="dropdown-item" href="#">Consulting</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled-menu</a>
-                    </li>
-                </ul>
+        <nav class="navbar navbar-expand-md navbar-light navbar-custom">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">UVA Jeopardy</a>
+
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">All Games</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">New Game</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Join Game</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Log Out</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-nav text-center" style="flex-direction: column;">
+                    <a href="#">
+                        <img src="img/blank-profile-picture.png" alt="Account" height="40" width="40" />
+                    </a>
+                    <a href="#" class="nav-link" style="margin: 0; padding: 0">Account</a>
+                </div>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             </div>
         </nav>
     </header>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
         crossorigin="anonymous"></script>
 
 </body>
@@ -61,12 +68,6 @@
         <img src="https://bloximages.newyork1.vip.townnews.com/newsadvance.com/content/tncms/assets/v3/editorial/1/4d/14d176be-bd87-5932-8e49-a36d93dbb07e/5122aa284763b.preview-620.png?crop=452%2C452%2C84%2C0&resize=1200%2C1200&order=crop%2Cresize"
             width="40" height="40" alt="">
     </a>
-</div>
-<div class="navbar-brand">
-    <a class="navbar-brand" href="#">
-        <img src="img/blank-profile-picture.png"
-            width="60" height="50" alt=""></a>
-    <h4>Account</h4>
-</div> -->
+</div>-->
 
 </html>
