@@ -1,18 +1,13 @@
-# Use the PHP 7.3 runtime by replacing "php72" below with "php73"
+# Use the PHP 5.5 runtime so the routing is easier
 runtime: php55
 
-entrypoint: serve src/loginpage.php
-
-#- url: /
-#  static_dir: src
-
 handlers:
+- url: /
+  script: src/loginpage.php
 - url: /login
   script: src/loginpage.php
 - url: /home
   script: src/homepage.php
-- url: /(.+\.php)$
-  script: auto
 - url: /styles/*
   static_dir: src/styles
 - url: /img/*
