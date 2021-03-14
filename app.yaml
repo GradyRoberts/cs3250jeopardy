@@ -8,7 +8,7 @@ entrypoint: serve src/loginpage.php
 
 handlers:
 - url: /(.+\.php)$
-  script: \1
+  script: auto
 - url: /styles/*
   static_dir: src/styles
 - url: /img/*
