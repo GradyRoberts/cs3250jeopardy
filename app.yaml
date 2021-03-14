@@ -2,3 +2,13 @@
 runtime: php73
 
 entrypoint: serve loginpage.php
+
+handlers:
+- url: /
+  static_files: loginpage.php
+- url: /*
+  static_dir: .
+- url: /styles/*
+  static_dir: styles
+- url: /img/*
+  static_dir: img
