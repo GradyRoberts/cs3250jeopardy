@@ -3,9 +3,12 @@ runtime: php73
 
 entrypoint: serve src/loginpage.php
 
+#- url: /
+#  static_dir: src
+
 handlers:
-- url: /
-  static_dir: src
+- url: /(.+\.php)$
+  script: \1
 - url: /styles/*
   static_dir: src/styles
 - url: /img/*
