@@ -7,6 +7,10 @@ entrypoint: serve src/loginpage.php
 #  static_dir: src
 
 handlers:
+- url: /login
+  script: src/loginpage.php
+- url: /home
+  script: src/homepage.php
 - url: /(.+\.php)$
   script: auto
 - url: /styles/*
