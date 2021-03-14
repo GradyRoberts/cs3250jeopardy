@@ -4,9 +4,9 @@ runtime: php55
 handlers:
 - url: /
   script: src/loginpage.php
-- url: /login
+- url: /loginpage\.php
   script: src/loginpage.php
-- url: /home
+- url: /homepage\.php
   script: src/homepage.php
 - url: /styles/*
   static_dir: src/styles
