@@ -1,0 +1,12 @@
+label { display: inline-block; margin-left: 10px; width: 10%;}
+input, textarea { display:inline-block; font-family:arial; margin: 5px 10px 5px 40px; padding: 8px 12px 8px 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: small; width: 70%; margin-left: 15%; }
+div { margin-left: auto; margin-right: auto; width: 30%; margin-top: auto; margin-top: auto; padding-bottom: 5%;}
+div.interior{border: 2px; border-color: black; border-style: solid; width: auto;}
+h1{ text-align: center; }
+h4{ text-align: center;}    
+input[type=submit] { padding:5px 15px; border:0 none; cursor:pointer; border-radius: 5px; margin-left:15%;}
+input[type=submit]:hover { background-color: #ccceee; }
+.msg { margin-left:40px; font-style: italic; color: red; }    
+html{ height:100%; }
+body{ min-height:100%; padding:0; margin:0; position:relative; }
+img.shown{display: block; margin-left: auto; margin-right: auto; width: 120; height: 120;}
