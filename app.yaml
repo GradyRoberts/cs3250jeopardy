@@ -8,8 +8,10 @@ handlers:
   script: src/loginpage.php
 - url: /homepage\.php
   script: src/homepage.php
-- url: /allgamespage\.php
-  script: src/allgamespage.php
+- url: /accountpage\.php
+  script: src/accountpage.php
+- url: /allgames\.php
+  script: src/allgames.php
 - url: /styles/*
   static_dir: src/styles
 - url: /img/*

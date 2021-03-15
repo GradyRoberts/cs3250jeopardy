@@ -5,28 +5,76 @@
 }
 
 div h4{
-    border: 2px;
+    border: 3px;
     border-color: black;
     border-style: solid;
     border: auto;
     background-color: blue;
     color: gold;
+    padding: 0px;
+    margin: 0px;
 }
 
 div.accountbox{
-    border: 2px;
+    border: 3px;
     border-color: black;
     border-style: solid;
-    border: auto;
     background-color: rgb(226, 226, 226);
 }
 
 div p{
     text-align: left;
     margin-left: 5%;
-
 }
 
 .main-content {
     background-color: #fff3d1;
+}
+
+div input, div select{ 
+    margin-bottom: 5%;
+}
+
+div textarea{
+    width: 80%;
+    color: black;
+}
+
+.accordion {
+    background-color: rgb(226, 226, 226);
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    border-left: 3px;
+    border-right: 3px;
+    border-bottom: 3px;
+    border-color: black;
+    border-style: solid;
+}
+
+.active, .accordion:hover {
+    background-color: rgb(226, 226, 226);
+}
+
+div.game{
+    border-bottom: 1px;
+    border-style: solid;
+    border-color: black;
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    border-left: 3px;
+    border-right: 3px;
+    border-bottom: 1px;
+    border-color: black;
+    border-style: solid;
+    overflow: hidden;
 }
