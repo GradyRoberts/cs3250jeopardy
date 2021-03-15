@@ -28,6 +28,8 @@
 
   <!-- 3. Style Sheets -->
   <link rel="stylesheet" href="styles/accountpage.css" />
+  <link rel="stylesheet" href="styles/navbar.css" />
+  <link rel="stylesheet" href="styles/footer.css" />
 </head>
 
 <body class="main-content">
@@ -113,6 +115,7 @@
       </div>
     </div>
   </div>
+  <?php include("footer.html") ?>
   <script>
     function answerSelect() {
       var str = document.getElementById("answerselect").value

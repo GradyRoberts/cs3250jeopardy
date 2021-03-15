@@ -4,30 +4,20 @@
 <head>
   <meta charset="UTF-8">
 
-  <!-- 2. include meta tag to ensure proper rendering and touch zooming -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- 
-  Bootstrap is designed to be responsive to mobile.
-  Mobile-first styles are part of the core framework.
-   
-  width=device-width sets the width of the page to follow the screen-width
-  initial-scale=1 sets the initial zoom level when the page is first loaded   
-  -->
 
   <meta name="author" content="Daniel Collins & Grady Roberts">
   <meta name="description" content="Course Project">
 
   <title>UVA Jeopardy</title>
 
-  <!--Reset CSS before loading bootstrap-->
   <link rel="stylesheet" href="styles/reset.css" />
 
-  <!-- 3. link bootstrap -->
-  <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
   <!-- 3. Style Sheets -->
-  <link rel="stylesheet" href="styles/home.css" />
+  <link rel="stylesheet" href="styles/accountpage.css" />
+  <link rel="stylesheet" href="styles/allgamespage.css" />
   <link rel="stylesheet" href="styles/footer.css" />
   <link rel="stylesheet" href="styles/navbar.css" />
 </head>
