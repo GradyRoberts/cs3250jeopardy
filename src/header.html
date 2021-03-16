@@ -12,10 +12,10 @@
                         <a class="nav-link" href="allgames.php">All Games</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">New Game</a>
+                        <a class="nav-link" href="newgame.php">New Game</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Join Game</a>
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#joinModal">Join Game</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="loginpage.php">Log Out</a>
@@ -34,4 +34,32 @@
             </button>
         </div>
     </nav>
+
+    <!-- Modal -->
+    <div class="modal fade" id="joinModal" tabindex="-1" aria-labelledby="joinModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="joinModalLabel">Join Game</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="" method="POST">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="roomNum" class="form-label">Room #</label>
+                            <input required type="text" class="form-control" id="roomNum" name="roomNum" placeholder="ex. 344322" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Join!</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
 </header>
