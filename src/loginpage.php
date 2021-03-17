@@ -41,7 +41,7 @@
         </div>
         <div class="interior">
             <h4>Create a new account!</h4>
-            <form action="homepage.php" method="get">
+            <form action="homepage.php" method="post">
                 <input type="text" name="createfname" placeholder="First Name" required /> <br />
                 <input type="text" name="createlname" placeholder="First Name" required /> <br />
                 <input type="email" name="createemail" placeholder="Email" required /> <br />
@@ -57,7 +57,7 @@
             var email = document.getElementById("loginemail").value;
             var password = document.getElementById("loginpwd").value;
             if (email == "good@good.com" && password == "123") {
-                alert("Login successfully");
+                alert("Login successful");
                 window.location.href = "homepage.php";
                 return false;
             } else {
