@@ -69,6 +69,7 @@
 
 
     <?php 
+        // Connect to the DB
         use PDO;
         use PDOException;
 
@@ -87,6 +88,7 @@
 
         echo "Connected to db<br/>";
 
+        // Pull some data to show connection is working
         $statement = $pdo->prepare('SELECT * FROM Users');
         $statement->execute();
         $result = $statement->fetch();
