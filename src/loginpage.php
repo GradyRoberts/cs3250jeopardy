@@ -90,7 +90,7 @@
         $statement = $pdo->prepare('SELECT * FROM Users');
         $statement->execute();
         $result = $statement->fetch();
-        echo $result . '<br/>';
+        var_dump($result);
     ?>
 
 </body>
