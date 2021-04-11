@@ -18,3 +18,9 @@ handlers:
   static_dir: src/styles
 - url: /img/*
   static_dir: src/img
+
+env_variables:
+  CLOUDSQL_USER: root
+  CLOUDSQL_DB: jeopardydb
+  CLOUDSQL_PASSWORD: admin
+  CLOUDSQL_CONN_NAME: cs3250-jeopardy:us-east4:jeopardydb
