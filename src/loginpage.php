@@ -80,9 +80,9 @@
 
     //LOG IN HANDLER
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
-        var_dump($_POST);
         if (sizeof($_POST) == 2) { //Login Request
-            $statement = $pdo->prepare('SELECT * FROM Users Where email = :email AND password = :password');
+            $query = "SELECT * FROM Users WHERE email = :email AND password = :password";
+            $statement = $pdo->prepare($query);
             $statement->bindValue(':email', $_POST['loginemail'], PDO::PARAM_STR);
             $statement->bindValue(':password', $_POST['loginpwd'], PDO::PARAM_STR);
             $statement->execute();
@@ -108,10 +108,10 @@
         }
     }
     // Pull some data to show connection is working
-    $statement = $pdo->prepare('SELECT * FROM Users');
-    $statement->execute();
-    $result = $statement->fetch();
-    var_dump($result);
+    //$statement = $pdo->prepare('SELECT * FROM Users');
+    //$statement->execute();
+    //$result = $statement->fetch();
+    //var_dump($result);
     ?>
 
 </body>
