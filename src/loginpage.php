@@ -107,11 +107,11 @@
 
         }
     }
-    // Pull some data to show connection is working
-    //$statement = $pdo->prepare('SELECT * FROM Users');
-    //$statement->execute();
-    //$result = $statement->fetch();
-    //var_dump($result);
+    //Pull some data to show connection is working
+    $statement = $pdo->prepare('SELECT * FROM Users');
+    $statement->execute();
+    $result = $statement->fetch();
+    var_dump($result);
     ?>
 
 </body>
