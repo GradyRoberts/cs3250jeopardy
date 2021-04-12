@@ -79,10 +79,10 @@
     echo "Connected to db<br/>";
 
     //Pull some data to show connection is working
-    $statement = $pdo->prepare('SELECT * FROM Users');
-    $statement->execute();
-    $result = $statement->fetch();
-    var_dump($result);
+    //$statement = $pdo->prepare('SELECT * FROM Users');
+    //$statement->execute();
+    //$result = $statement->fetch();
+    //var_dump($result);
 
     //LOG IN HANDLER
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -93,7 +93,7 @@
             $statement->bindValue(':password', $_POST['loginpwd'], PDO::PARAM_STR);
             $statement->execute();
             $result = $statement->fetch();
-            echo "Results" . "<br/>";
+            echo "Login Results" . "<br/>";
             var_dump($result);
             if (mysqli_num_rows($result) != 0) { //There was a user in the table with that email and password
                 echo "Login Successful" . "</br>";
