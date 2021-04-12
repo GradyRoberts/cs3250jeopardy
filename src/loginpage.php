@@ -100,7 +100,7 @@
                 $_SESSION['user'] = $_POST['loginemail']; #Grab their first and last name from the DB and store them in cookies name into cookies for use on the next page
                 $_COOKIE['fname'] = $result['fname'];
                 $_COOKIE['lname'] = $result['lname'];
-                #header('Location: homepage.php');  #Redirects to home page
+                header('Location: homepage.php');  #Redirects to home page
             } else {
                 echo "Incorrect Username or Password" . "</br>";
             }
@@ -121,7 +121,7 @@
                     $statement->bindValue(':password', $_POST['pwd1'], PDO::PARAM_STR);
                     $statement->execute();
                     echo "Account Created" . "</br>";
-                    #header('Location: homepage.php');  #Redirects to home page
+                    header('Location: homepage.php');  #Redirects to home page
                 } else {
                     echo "Account already Exists" . "</br>";
                 }
