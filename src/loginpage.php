@@ -48,9 +48,9 @@
         <div class="interior">
             <h4>Create a new account!</h4>
             <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-                <input type="text" name="createfname" placeholder="First Name" required /> <br />
-                <input type="text" name="createlname" placeholder="Last Name" required /> <br />
-                <input type="email" name="createemail" placeholder="Email" required /> <br />
+                <input type="text" name="fname" placeholder="First Name" required /> <br />
+                <input type="text" name="lname" placeholder="Last Name" required /> <br />
+                <input type="email" name="email" placeholder="Email" required /> <br />
                 <input type="password" name="pwd1" placeholder="Password" required /> <br />
                 <input type="password" name="pwd2" placeholder="Confirm Password" required /> <br />
                 <input type="submit" value="Register Account" class="btn btn-secondary" />
@@ -105,13 +105,29 @@
                 echo "Incorrect Username or Password" . "</br>";
             }
         } else if (sizeof($_POST) == 5) { //Create Account Request
-            echo "Register" . "</br>";
-            //Check if Email is already in the database and stop code
-
-
-            //Check if passwords are equal
-
-
+            echo "Register" . "<br/>";
+            if ($_POST["pwd1"] == $_POST["pwd2"]) { //If password and confirmed passwords match
+                $query = "SELECT * FROM Users WHERE email = :email";
+                $statement = $pdo->prepare($query);
+                $statement->bindValue(':email', $_POST['loginemail'], PDO::PARAM_STR);
+                $statement->execute();
+                $result = $statement->fetch();
+                if (mysqli_num_rows($result) == 0) { //There is no user in the table with that email 
+                    $query = "INSERT INTO Users (email, fname, lname, password) VALUES (:email, :fname, :lname, :password)"; //Create User
+                    $statement = $pdo->prepare($query);
+                    $statement->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
+                    $statement->bindValue(':fname', $_POST['fname'], PDO::PARAM_STR);
+                    $statement->bindValue(':lname', $_POST['lname'], PDO::PARAM_STR);
+                    $statement->bindValue(':password', $_POST['pwd1'], PDO::PARAM_STR);
+                    $statement->execute();
+                    echo "Account Created" . "</br>";
+                    #header('Location: homepage.php');  #Redirects to home page
+                } else {
+                    echo "Account already Exists" . "</br>";
+                }
+            } else {
+                echo "Passwords Do Not Match" . "</br>";
+            }
         }
     }
 
