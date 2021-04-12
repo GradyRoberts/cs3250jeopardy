@@ -103,7 +103,6 @@
                 header('Location: homepage.php');  #Redirects to home page
             } else {
                 echo "Incorrect Username or Password" . "</br>";
-                unset($result);
             }
         } else if (sizeof($_POST) == 5) { //Create Account Request
             echo "Register" . "<br/>";
@@ -125,7 +124,6 @@
                     header('Location: homepage.php');  #Redirects to home page
                 } else {
                     echo "Account already Exists" . "</br>";
-                    unset($result);
                 }
             } else {
                 echo "Passwords Do Not Match" . "</br>";
