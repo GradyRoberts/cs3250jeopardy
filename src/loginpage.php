@@ -87,6 +87,7 @@
             $statement->bindValue(':password', $_POST['loginpwd'], PDO::PARAM_STR);
             $statement->execute();
             $result = $statement->fetch();
+            echo "Results" . "<br/>";
             var_dump($result);
             if (sizeof($result) != 0) { //There was a user in the table with that email and password
                 echo "Login Successful" . "</br>";
