@@ -89,7 +89,7 @@
             $result = $statement->fetch();
             echo "Results" . "<br/>";
             var_dump($result);
-            if (sizeof($result) != 0) { //There was a user in the table with that email and password
+            if (mysqli_num_rows($result) != 0) { //There was a user in the table with that email and password
                 echo "Login Successful" . "</br>";
                 $_SESSION['user'] = $_POST['loginemail']; #Grab their first and last name from the DB and store them in cookies name into cookies for use on the next page
                 $_COOKIE['fname'] = $result['fname'];
