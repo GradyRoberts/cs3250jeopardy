@@ -78,6 +78,12 @@
 
     echo "Connected to db<br/>";
 
+    //Pull some data to show connection is working
+    $statement = $pdo->prepare('SELECT * FROM Users');
+    $statement->execute();
+    $result = $statement->fetch();
+    var_dump($result);
+
     //LOG IN HANDLER
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if (sizeof($_POST) == 2) { //Login Request
@@ -108,11 +114,7 @@
 
         }
     }
-    //Pull some data to show connection is working
-    $statement = $pdo->prepare('SELECT * FROM Users');
-    $statement->execute();
-    $result = $statement->fetch();
-    var_dump($result);
+
     ?>
 
 </body>
