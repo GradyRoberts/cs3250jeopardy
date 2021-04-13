@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['user'])) {
-  header("Location: /loginpage.php");
+  header("Location: loginpage.php");
 }
 ?>
 <?php
@@ -17,7 +17,7 @@ $statement->bindValue(':id', $id, PDO::PARAM_INT);
 $statement->execute();
 
 if ($statement) {
-    header("location: /accountpage.php"); // redirects to all records page
+    header("location: accountpage.php"); // redirects to all records page
 } else {
     echo "Error Deleting Question";
 }

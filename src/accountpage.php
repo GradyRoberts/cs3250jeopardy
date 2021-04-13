@@ -3,7 +3,7 @@ require('isLocalhost.php');
 if (isLocalhost()) {
   session_start(); 
   if (! isset($_SESSION['user'])) {
-      header("Location: /loginpage.php");
+      header("Location: loginpage.php");
   }
 }
 ?>
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       $statement->execute();
       $result = $statement->fetch();
       $statement->closeCursor();
-      header('Location: /logout.php');  #Redirects to home page
+      header('Location: logout.php');  #Redirects to home page
     }
   } else if ($_POST['form'] == "QuestionForm") { //Change to the Questions Form
     $query = 'INSERT INTO Questions (question, atype, answer, email) VALUES (:question, :atype, :answer, :email)'; //Create User

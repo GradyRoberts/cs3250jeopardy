@@ -10,56 +10,61 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             if ($_POST['loginpwd'] == 'ABC') { // example info for localhost
                 session_start();
                 $_SESSION['user'] = $_POST['loginemail'];
+                setcookie('user', $_POST['loginemail'], time() + 3600, '/');
+                setcookie('fname', 'Grady', time() + 3600, '/');
+                setcookie('lname', 'Roberts', time() + 3600, '/');
+                header("Location: homepage.php");
             } else {
                 echo "Incorrect Username or Password" . "</br>";
             }
         }
-    }
-    if (sizeof($_POST) == 2) { //Login Request
-        $query = "SELECT * FROM Users WHERE email = :email AND password = :password";
-        $statement = $pdo->prepare($query);
-        $statement->bindValue(':email', $_POST['loginemail'], PDO::PARAM_STR);
-        $statement->bindValue(':password', $_POST['loginpwd'], PDO::PARAM_STR);
-        $statement->execute();
-        $result = $statement->fetch();
-        $statement->closeCursor();
-        if (!empty($result)) { //There was a user in the table with that email and password
-            setcookie('user', $_POST['loginemail'], time() + 3600, '/');
-            setcookie('fname', $result['fname'], time() + 3600, '/');
-            setcookie('lname', $result['lname'], time() + 3600, '/');
-            header('Location: /homepage.php');  #Redirects to home page
-        } else {
-            echo "Incorrect Username or Password" . "</br>";
-        }
-    } else if (sizeof($_POST) == 5) { //Create Account Request
-        if ($_POST["pwd1"] == $_POST["pwd2"]) { //If password and confirmed passwords match
-            $query = "SELECT * FROM Users WHERE email = :email";
+    } else {
+        if (sizeof($_POST) == 2) { //Login Request
+            $query = "SELECT * FROM Users WHERE email = :email AND password = :password";
             $statement = $pdo->prepare($query);
-            $statement->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
+            $statement->bindValue(':email', $_POST['loginemail'], PDO::PARAM_STR);
+            $statement->bindValue(':password', $_POST['loginpwd'], PDO::PARAM_STR);
             $statement->execute();
             $result = $statement->fetch();
             $statement->closeCursor();
-            if (empty($result)) { //There is no user in the table with that email 
-                $query = "INSERT INTO Users (email, fname, lname, password) VALUES (:email, :fname, :lname, :password)"; //Create User
+            if (!empty($result)) { //There was a user in the table with that email and password
+                setcookie('user', $_POST['loginemail'], time() + 3600, '/');
+                setcookie('fname', $result['fname'], time() + 3600, '/');
+                setcookie('lname', $result['lname'], time() + 3600, '/');
+                header('Location: homepage.php');  #Redirects to home page
+            } else {
+                echo "Incorrect Username or Password" . "</br>";
+            }
+        } else if (sizeof($_POST) == 5) { //Create Account Request
+            if ($_POST["pwd1"] == $_POST["pwd2"]) { //If password and confirmed passwords match
+                $query = "SELECT * FROM Users WHERE email = :email";
                 $statement = $pdo->prepare($query);
                 $statement->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
-                $statement->bindValue(':fname', $_POST['fname'], PDO::PARAM_STR);
-                $statement->bindValue(':lname', $_POST['lname'], PDO::PARAM_STR);
-                $statement->bindValue(':password', $_POST['pwd1'], PDO::PARAM_STR);
                 $statement->execute();
+                $result = $statement->fetch();
                 $statement->closeCursor();
+                if (empty($result)) { //There is no user in the table with that email 
+                    $query = "INSERT INTO Users (email, fname, lname, password) VALUES (:email, :fname, :lname, :password)"; //Create User
+                    $statement = $pdo->prepare($query);
+                    $statement->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
+                    $statement->bindValue(':fname', $_POST['fname'], PDO::PARAM_STR);
+                    $statement->bindValue(':lname', $_POST['lname'], PDO::PARAM_STR);
+                    $statement->bindValue(':password', $_POST['pwd1'], PDO::PARAM_STR);
+                    $statement->execute();
+                    $statement->closeCursor();
 
-                // session_start();
-                // $_SESSION['user'] = $_POST['loginemail'];
-                setcookie('user', $_POST['email'], time() + 3600, '/');
-                setcookie('fname', $_POST['fname'], time() + 3600, '/');
-                setcookie('lname', $_POST['lname'], time() + 3600, '/');
-                header('Location: /homepage.php');  #Redirects to home page
+                    // session_start();
+                    // $_SESSION['user'] = $_POST['loginemail'];
+                    setcookie('user', $_POST['email'], time() + 3600, '/');
+                    setcookie('fname', $_POST['fname'], time() + 3600, '/');
+                    setcookie('lname', $_POST['lname'], time() + 3600, '/');
+                    header('Location: homepage.php');  #Redirects to home page
+                } else {
+                    echo "Account already Exists" . "</br>";
+                }
             } else {
-                echo "Account already Exists" . "</br>";
+                echo "Passwords Do Not Match" . "</br>";
             }
-        } else {
-            echo "Passwords Do Not Match" . "</br>";
         }
     }
 }
