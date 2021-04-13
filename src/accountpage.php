@@ -13,9 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       $statement = $pdo->prepare($query);
       $statement->bindValue(':email', $_COOKIE['user'], PDO::PARAM_STR);
       $statement->bindValue(':fname', $_POST['fname'], PDO::PARAM_STR);
-      setcookie('fname', $_POST['fname'], time() + 3600);
+      setcookie('fname', $_POST['fname'], time() + 3600, '/');
       $statement->bindValue(':lname', $_POST['lname'], PDO::PARAM_STR);
-      setcookie('lname', $_POST['lname'], time() + 3600);
+      setcookie('lname', $_POST['lname'], time() + 3600, '/');
       $statement->execute();
       $result = $statement->fetch();
       $statement->closeCursor();

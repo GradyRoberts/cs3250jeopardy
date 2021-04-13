@@ -16,9 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             //$_SESSION['user'] = $_POST['loginemail']; #Grab their first and last name from the DB and store them in cookies name into cookies for use on the next page
             //$_SESSION['fname'] = $result['fname'];
             //$_SESSION['lname'] = $result['lname'];
-            setcookie('user', $_POST['loginemail'], time() + 3600);
-            setcookie('fname', $result['fname'], time() + 3600);
-            setcookie('lname', $result['lname'], time() + 3600);
+            setcookie('user', $_POST['loginemail'], time() + 3600, '/');
+            setcookie('fname', $result['fname'], time() + 3600, '/');
+            setcookie('lname', $result['lname'], time() + 3600, '/');
             header('Location: https://cs3250-jeopardy.uk.r.appspot.com/homepage.php');  #Redirects to home page
         } else {
             echo "Incorrect Username or Password" . "</br>";
@@ -45,9 +45,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 //$_SESSION['user'] = $_POST['email']; #Grab their first and last name from the DB and store them in cookies name into cookies for use on the next page
                 //$_SESSION['fname'] = $_POST['fname'];
                 //$_SESSION['lname'] = $_POST['lname'];
-                setcookie('user', $_POST['email'], time() + 3600);
-                setcookie('fname', $_POST['fname'], time() + 3600);
-                setcookie('lname', $_POST['lname'], time() + 3600);
+                setcookie('user', $_POST['email'], time() + 3600, '/');
+                setcookie('fname', $_POST['fname'], time() + 3600, '/');
+                setcookie('lname', $_POST['lname'], time() + 3600, '/');
                 header('Location: https://cs3250-jeopardy.uk.r.appspot.com/homepage.php');  #Redirects to home page
             } else {
                 echo "Account already Exists" . "</br>";

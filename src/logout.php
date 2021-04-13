@@ -10,7 +10,7 @@ function logout() {
 		
             // To completely remove cookies from the client, 
             // set the expiration time to be in the past
-            setcookie($key, '', time() - 3600);
+            setcookie($key, '', time() - 3600, '/');
         }
     }
     session_destroy();
