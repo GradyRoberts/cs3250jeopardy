@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       <div class="col-lg d-flex justify-content-center text-center column">
         <img style="margin: auto" src="img/image-placeholder.png" width="250" height="250" alt="placeholder" />
         <div class="accountbox">
-          <h4>Account Information</h4>
+          <h4 class="jeoph">Account Information</h4>
           <form action="accountpage.php" method="post" style="margin:2px">
             <div class="block">
               <label><b>Email:</b></label>
@@ -107,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       </div>
       <div class="col-lg d-flex justify-content-center text-center column">
         <div class="accountbox">
-          <h4>Your Games</h4>
+          <h4 class="jeoph">Your Games</h4>
           <div class="game">
             <label><b>CS 2110</b></label>
             <a href="#">
@@ -136,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       </div>
       <div class="col-lg d-flex justify-content-center text-center column">
         <div class="myquestbox">
-          <h4>Your Questions</h4>
+          <h4 class="jeoph">Your Questions</h4>
           <?php
 
           $sql = "SELECT id, question,answer FROM Questions WHERE email = :email";
@@ -165,7 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       </div>
       <div class=" col-lg d-flex justify-content-center text-center column">
         <div class="accountbox">
-          <h4>Add Questions</h4>
+          <h4 class="jeoph">Add Questions</h4>
           <form action="accountpage.php" method="post" style="margin:2px">
             <input type="text" name="question" id="question" placeholder="Question" required /> <br />
             <select id="answerselect" class="answerselect" name="atype" onchange="answerSelect()" required>
