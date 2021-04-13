@@ -14,8 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if (!empty($result)) { //There was a user in the table with that email and password
             session_start();
             $_SESSION['user'] = $_POST['loginemail']; #Grab their first and last name from the DB and store them in cookies name into cookies for use on the next page
-            $_SESSION['fname'] = $_result['fname'];
-            $_SESSION['lname'] = $_result['lname'];
+            $_SESSION['fname'] = $result['fname'];
+            $_SESSION['lname'] = $result['lname'];
             setcookie('user', $_POST['loginemail'], time() + 3600);
             setcookie('fname', $result['fname'], time() + 3600);
             setcookie('lname', $result['lname'], time() + 3600);
