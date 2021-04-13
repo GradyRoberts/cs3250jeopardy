@@ -141,7 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           <?php
 
           $sql = "SELECT id, question,answer FROM Questions";
-          $statement = $pdo->prepare($query);
+          $statement = $pdo->prepare($sql);
           $statement->execute();
           $result = $statement->fetch();
           $statement->closeCursor();
