@@ -2,10 +2,5 @@
     "require": {
         "google/cloud-firestore": "^1.19",
         "google/protobuf": "^v3.3.0"
-    },
-    "scripts": {
-        "gcp-build": [
-            "composer install"
-        ]
     }
 }
