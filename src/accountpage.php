@@ -40,10 +40,30 @@
         <img style="margin: auto" src="img/image-placeholder.png" width="250" height="250" alt="placeholder" />
         <div class="accountbox">
           <h4>Account Information</h4>
-          <p><b>First Name:</b> </p>
-          <p><b>Last Name:</b> </p>
-          <p><b>Email:</b> </p>
-          <p><b>Password:</b> </p>
+          <form action="accountpage.php" method="post" style="margin:2px">
+            <div class="block">
+              <label><b>Email:</b></label>
+              <input type="text" placeholder="stuff@stuff.com" readonly="readonly" />
+            </div>
+            <div class="block">
+              <label><b>First Name:</b></label>
+              <input type="text" />
+            </div>
+            <div class=" block">
+              <label><b>Last Name:</b></label>
+              <input type="text" />
+            </div>
+            <div class="block">
+              <label><b>Password:</b></label>
+              <input type="text" />
+            </div>
+          </form>
+          <p> </p>
+          <p> </p>
+          <p> </p>
+          <input type="submit" value="UpdateAccount" class="btn btn-secondary" />
+          <input type="submit" value="DeleteAccount" class="btn btn-secondary" />
+
         </div>
       </div>
       <div class="col-lg d-flex justify-content-center text-center column">
@@ -116,14 +136,14 @@
     </div>
   </div>
   <?php include("footer.html") ?>
-  
-  <?php 
-    session_start(); 
-    if (! isset($_SESSION['user'])) {
-        header("Location: loginpage.php");
-    }
+
+  <?php
+  session_start();
+  if (!isset($_SESSION['user'])) {
+    header("Location: loginpage.php");
+  }
   ?>
-  
+
   <script>
     function answerSelect() {
       var str = document.getElementById("answerselect").value
