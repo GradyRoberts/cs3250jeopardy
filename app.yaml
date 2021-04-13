@@ -20,7 +20,8 @@ handlers:
 - url: /img/*
   static_dir: src/img
 - url: /favicon.ico
-  static_dir: src/img
+  static_files: src/img/favicon.ico
+  upload: src/img/favicon.ico
 - url: /.*
   script: auto
 

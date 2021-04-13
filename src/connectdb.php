@@ -1,7 +1,7 @@
 <?php 
     // Connect to the DB
-    use PDO;
-    use PDOException;
+    // use PDO;
+    // use PDOException;
 
     $dbUser = getenv('CLOUDSQL_USER');
     $dbPass = getenv('CLOUDSQL_PASSWORD');
