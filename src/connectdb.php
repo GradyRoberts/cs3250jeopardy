@@ -15,3 +15,4 @@
         echo "Can't connect to db<br/>";
         echo $e->getMessage() . "<br/>";
     }
+?>

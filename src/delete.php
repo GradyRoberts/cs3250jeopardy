@@ -16,3 +16,4 @@ if ($statement) {
 } else {
     echo "Error Deleting Question";
 }
+?>
