@@ -147,8 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           $statement->closeCursor();
 
           $i = 0;
-          if ($result->num_rows > 0) {
-            // output data of each row
+          if (!empty($result)) {
             while ($row = $result->fetch_assoc()) {
               $i++;
               $question = $row["question"];
