@@ -26,6 +26,12 @@
 </head>
 
 <body class="main-content">
+
+
+    <?php session_start(); ?>
+
+
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     <div>
@@ -33,51 +39,93 @@
         <h1>Jeopardy!</h1>
         <div class="interior">
             <h4>Have an account already?</h4>
-            <form method="post">
+            <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
                 <input type="email" name="loginemail" id="loginemail" placeholder="Email" required /> <br />
                 <input type="password" name="loginpwd" id="loginpwd" placeholder="Password" required /> <br />
-                <input type="submit" value="Log In" class="btn btn-secondary" onclick="return login()" />
+                <input type="submit" value="Log In" class="btn btn-secondary" />
             </form>
         </div>
         <div class="interior">
             <h4>Create a new account!</h4>
-            <form action="homepage.php" method="post">
-                <input type="text" name="createfname" placeholder="First Name" required /> <br />
-                <input type="text" name="createlname" placeholder="First Name" required /> <br />
-                <input type="email" name="createemail" placeholder="Email" required /> <br />
-                <input type="password" name="pwd" placeholder="Password" required /> <br />
-                <input type="password" name="pwd" placeholder="Confirm Password" required /> <br />
+            <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+                <input type="text" name="fname" placeholder="First Name" required /> <br />
+                <input type="text" name="lname" placeholder="Last Name" required /> <br />
+                <input type="email" name="email" placeholder="Email" required /> <br />
+                <input type="password" name="pwd1" placeholder="Password" required /> <br />
+                <input type="password" name="pwd2" placeholder="Confirm Password" required /> <br />
                 <input type="submit" value="Register Account" class="btn btn-secondary" />
             </form>
         </div>
     </div>
 
-    <script>
-        function login() {
-            var email = document.getElementById("loginemail").value;
-            var password = document.getElementById("loginpwd").value;
-            if (email == "good@good.com" && password == "123") {
-                alert("Login successful");
-                window.location.href = "homepage.php";
-                return false;
+    <?php
+    // Connect to the DB
+    use PDO;
+    use PDOException;
+
+    $dbUser = getenv('CLOUDSQL_USER');
+    $dbPass = getenv('CLOUDSQL_PASSWORD');
+    $dbName = getenv('CLOUDSQL_DB');
+    $dbConn = getenv('CLOUDSQL_CONN_NAME');
+
+    $dsn = "mysql:unix_socket=/cloudsql/${dbConn};dbname=${dbName}";
+    try {
+        $pdo = new PDO($dsn, $dbUser, $dbPass);
+    } catch (PDOException $e) {
+        echo "Can't connect to db<br/>";
+        echo $e->getMessage() . "<br/>";
+    }
+
+    echo "Connected to db<br/>";
+
+    //LOG IN HANDLER
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        if (sizeof($_POST) == 2) { //Login Request
+            $query = "SELECT * FROM Users WHERE email = :email AND password = :password";
+            $statement = $pdo->prepare($query);
+            $statement->bindValue(':email', $_POST['loginemail'], PDO::PARAM_STR);
+            $statement->bindValue(':password', $_POST['loginpwd'], PDO::PARAM_STR);
+            $statement->execute();
+            $result = $statement->fetch();
+            $statement->closeCursor();
+            echo "Login Results" . "<br/>";
+            var_dump($result);
+            if (mysqli_num_rows($result) != 0) { //There was a user in the table with that email and password
+                echo "Login Successful" . "</br>";
+                $_SESSION['user'] = $_POST['loginemail']; #Grab their first and last name from the DB and store them in cookies name into cookies for use on the next page
+                $_COOKIE['fname'] = $result['fname'];
+                $_COOKIE['lname'] = $result['lname'];
+                header('Location: homepage.php');  #Redirects to home page
             } else {
-                alert("Invalid username/password using in login");
-                return false;
+                echo "Incorrect Username or Password" . "</br>";
+            }
+        } else if (sizeof($_POST) == 5) { //Create Account Request
+            echo "Register" . "<br/>";
+            if ($_POST["pwd1"] == $_POST["pwd2"]) { //If password and confirmed passwords match
+                $query = "SELECT * FROM Users WHERE email = :email";
+                $statement = $pdo->prepare($query);
+                $statement->bindValue(':email', $_POST['loginemail'], PDO::PARAM_STR);
+                $statement->execute();
+                $result = $statement->fetch();
+                if (mysqli_num_rows($result) == 0) { //There is no user in the table with that email 
+                    $query = "INSERT INTO Users (email, fname, lname, password) VALUES (:email, :fname, :lname, :password)"; //Create User
+                    $statement = $pdo->prepare($query);
+                    $statement->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
+                    $statement->bindValue(':fname', $_POST['fname'], PDO::PARAM_STR);
+                    $statement->bindValue(':lname', $_POST['lname'], PDO::PARAM_STR);
+                    $statement->bindValue(':password', $_POST['pwd1'], PDO::PARAM_STR);
+                    $statement->execute();
+                    echo "Account Created" . "</br>";
+                    header('Location: homepage.php');  #Redirects to home page
+                } else {
+                    echo "Account already Exists" . "</br>";
+                }
+            } else {
+                echo "Passwords Do Not Match" . "</br>";
             }
         }
-    </script>
+    }
 
-
-    <?php 
-        require('connectdb.php');
-
-        global $pdo;
-
-        $statement = $pdo->prepare('SELECT * FROM Users');
-        $statement->execute();
-        $result = $statement->fetchAll();
-        $statement->closeCursor();
-        var_dump($result);
     ?>
 
 </body>
