@@ -60,7 +60,7 @@
 
 
     <?php
-    header("Location: hompage.php");
+    header("Location: homepage.php");
     ?>
 
     <?php
