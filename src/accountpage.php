@@ -148,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
           $i = 0;
           if (!empty($result)) {
-            while ($row = $result->fetch_assoc()) {
+            while ($row = mysqli_fetch_assoc($result)) {
               $i++;
               $question = $row["question"];
               $answer = $row["answer"];
