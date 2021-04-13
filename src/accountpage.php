@@ -1,4 +1,42 @@
-<!DOCTYPE html>
+<?php
+session_start();
+if (!isset($_SESSION['user'])) {
+  header("Location: loginpage.php");
+}
+?>
+<?php
+require('connectdb.php');
+global $pdo;
+//LOG IN HANDLER
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+  if ($_POST['form'] == "AccountForm") { //Change to the Account
+    if ($_POST['button'] == "Update Account") {
+      $query = "SELECT * FROM Users WHERE email = :email AND password = :password";
+      $statement = $pdo->prepare($query);
+      $statement->bindValue(':email', $_POST['loginemail'], PDO::PARAM_STR);
+      $statement->bindValue(':password', $_POST['loginpwd'], PDO::PARAM_STR);
+      $statement->execute();
+      $result = $statement->fetch();
+      $statement->closeCursor();
+    } else if ($_POST['button'] == "Delete Account") {
+      $query = "DELETE FROM Users
+      WHERE email = ':email";
+      $statement = $pdo->prepare($query);
+      $statement->bindValue(':email', "daniel.p.collins@me.com", PDO::PARAM_STR);
+      $statement->execute();
+      $result = $statement->fetch();
+      $statement->closeCursor();
+      header('Location: /logout.php');  #Redirects to home page
+    }
+  } else if ($_POST['form'] == "AccountForm") { //Change to the Questions Form
+
+  } else {
+    echo "Passwords Do Not Match" . "</br>";
+  }
+}
+
+?>
+
 <html>
 
 <head>
@@ -58,11 +96,9 @@
               <input type="text" />
             </div>
           </form>
-          <p> </p>
-          <p> </p>
-          <p> </p>
-          <input type="submit" value="UpdateAccount" class="btn btn-secondary" />
-          <input type="submit" value="DeleteAccount" class="btn btn-secondary" />
+          <input type="hidden" name="form" value="AccountForm" />
+          <input type="submit" name=button value="Update Account" class="btn btn-secondary" />
+          <input type="submit" name=button value="Delete Account" class="btn btn-secondary" />
 
         </div>
       </div>
@@ -127,22 +163,16 @@
               <option value="Free Response">Free Response</option>
             </select>
             <textarea rows="5" columns="20" name="answer" id="answer" placeholder="Select Answer Type First" required></textarea>
+            <input type="hidden" value="QuestionForm" />
             <input type="submit" value="Submit Question" class="btn btn-secondary" />
           </form>
-          <br />
-
         </div>
       </div>
     </div>
   </div>
   <?php include("footer.html") ?>
 
-  <?php
-  session_start();
-  if (!isset($_SESSION['user'])) {
-    header("Location: loginpage.php");
-  }
-  ?>
+
 
   <script>
     function answerSelect() {
@@ -170,6 +200,7 @@
       });
     }
   </script>
+
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 </body>
