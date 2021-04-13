@@ -1,7 +1,5 @@
 runtime: php73
 
-entrypoint: serve frontcontroller.php
-
 # handlers:
 # - url: /
 #   script: src/loginpage.php
@@ -21,6 +19,8 @@ handlers:
   static_dir: src/styles
 - url: /img/*
   static_dir: src/img
+- url: /.*
+  script: auto
 
 env_variables:
   CLOUDSQL_USER: root
