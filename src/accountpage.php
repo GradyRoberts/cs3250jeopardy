@@ -16,13 +16,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       $statement->bindValue(':email', $_COOKIE['user'], PDO::PARAM_STR);
       if ($_POST['fname'] != "") {
         $statement->bindValue(':fname', $_POST['fname'], PDO::PARAM_STR);
-        $_SESSION['fname'] = $_POST['fname'];
+        $_COOKIE['fname'] = $_POST['fname'];
       } else {
         $statement->bindValue(':fname', $_COOKIE['fname'], PDO::PARAM_STR);
       }
       if ($_POST['lname'] != "") {
         $statement->bindValue(':lname', $_POST['lname'], PDO::PARAM_STR);
-        $_SESSION['lname'] = $_POST['lname'];
+        $_COOKIE['lname'] = $_POST['lname'];
       } else {
         $statement->bindValue(':lname', $_COOKIE['lname'], PDO::PARAM_STR);
       }
@@ -104,10 +104,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <div class="block">
               <label><b>Email:</b></label>
               <input type="text" placeholder="stuff@stuff.com" readonly="readonly" />
-            </div>
-            <div class="block">
-              <label><b>Password:</b></label>
-              <input type="text" name="pwd" readonly="readonly" />
             </div>
             <div class="block">
               <label><b>First Name:</b></label>
