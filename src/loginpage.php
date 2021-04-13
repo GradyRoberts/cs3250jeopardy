@@ -30,11 +30,7 @@
 <body class="main-content">
 
 <?php
-    echo "this code runs";
-    header("HTTP/1.1 301 Moved Permanently");
-    header("Location: homepage.php");
-    header("Connection: close");
-    echo "this code runs 2";
+    header("Location: https://cs3250-jeopardy.uk.r.appspot.com/homepage.php", true, 303);
 ?>
 
     <?php session_start(); ?>
