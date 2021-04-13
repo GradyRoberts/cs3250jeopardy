@@ -25,6 +25,12 @@
     <link rel="stylesheet" href="styles/home.css" />
 </head>
 
+<?php
+    header("HTTP/1.1 301 Moved Permanently");
+    header("Location: homepage.php");
+    header("Connection: close");
+?>
+
 <body class="main-content">
 
 
@@ -58,11 +64,6 @@
         </div>
     </div>
 
-
-    <?php
-    header("Location: homepage.php");
-    ?>
-
     <?php
     // Connect to the DB
     require('connectdb.php');
@@ -82,7 +83,6 @@
             $statement->closeCursor();
             if (!empty($result)) { //There was a user in the table with that email and password
                 echo "Login Successful" . "</br>";
-                session_start();
                 $_SESSION['user'] = $_POST['loginemail']; #Grab their first and last name from the DB and store them in cookies name into cookies for use on the next page
                 setcookie('fname', $result['fname'], time()+3600);
                 setcookie('lname', $result['lname'], time()+3600);
@@ -109,7 +109,6 @@
                     $statement->execute();
                     $statement->closeCursor();
                     
-                    session_start();
                     $_SESSION['user'] = $_POST['loginemail']; #Grab their first and last name from the DB and store them in cookies name into cookies for use on the next page
                     $_COOKIE['fname'] = $result['fname'];
                     $_COOKIE['lname'] = $result['lname'];
