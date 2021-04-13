@@ -84,7 +84,7 @@
             $statement->closeCursor();
             echo "Login Results" . "<br/>";
             var_dump($result);
-            if (mysqli_num_rows($result) != 0) { //There was a user in the table with that email and password
+            if (!empty($result)) { //There was a user in the table with that email and password
                 echo "Login Successful" . "</br>";
                 session_start();
                 $_SESSION['user'] = $_POST['loginemail']; #Grab their first and last name from the DB and store them in cookies name into cookies for use on the next page
@@ -103,7 +103,7 @@
                 $statement->execute();
                 $result = $statement->fetch();
                 $statement->closeCursor();
-                if (mysqli_num_rows($result) == 0) { //There is no user in the table with that email 
+                if (empty($result)) { //There is no user in the table with that email 
                     $query = "INSERT INTO Users (email, fname, lname, password) VALUES (:email, :fname, :lname, :password)"; //Create User
                     $statement = $pdo->prepare($query);
                     $statement->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
