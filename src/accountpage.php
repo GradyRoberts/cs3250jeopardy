@@ -138,8 +138,43 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       <div class="col-lg d-flex justify-content-center text-center column">
         <div class="myquestbox">
           <h4>Your Questions</h4>
-          <?php
-
+          <div class='pnel-group' id='accordion1'>
+            <div class='panel panel-default'>
+              <div class='panel-heading'>
+                <h4 class='panel-title'>
+                  <a data-toggle='collapse' data-parent='#accordion1' href='#collapse1'>Why did the chicken cross the road </a>
+                </h4>
+              </div>
+              <div id='collapse1' class='panel-collapse collapse'>
+                <div class='panel-body'>To get to the other side</div>
+              </div>
+            </div>
+          </div>
+          <div class='pnel-group' id='accordion2'>
+            <div class='panel panel-default'>
+              <div class='panel-heading'>
+                <h4 class='panel-title'>
+                  <a data-toggle='collapse' data-parent='#accordion2' href='#collapse2'>Henlo? </a>
+                </h4>
+              </div>
+              <div id='collapse2' class='panel-collapse collapse'>
+                <div class='panel-body'>YOoooo</div>
+              </div>
+            </div>
+          </div>
+          <div class='pnel-group' id='accordion3'>
+            <div class='panel panel-default'>
+              <div class='panel-heading'>
+                <h4 class='panel-title'>
+                  <a data-toggle='collapse' data-parent='#accordion3' href='#collapse3'>YOOO </a>
+                </h4>
+              </div>
+              <div id='collapse3' class='panel-collapse collapse'>
+                <div class='panel-body'>Its Me</div>
+              </div>
+            </div>
+          </div>
+          <!--
           $sql = "SELECT id, question,answer FROM Questions";
           $stuff = $pdo->prepare($sql);
           $stuff->execute();
@@ -165,24 +200,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           } else {
             echo "You have not submitted any question!";
           }
-          ?>
-          <!--
-          <button class="accordion">Question 1</button>
-          <div class="panel">
-            <p>Answer 1</p>
-          </div>
-          <button class="accordion">Question 2</button>
-          <div class="panel">
-            <p>Answer 2</p>
-          </div>
-          <button class="accordion">Question 3</button>
-          <div class="panel">
-            <p>Answer 3</p>
-          </div>
-          <button class="accordion">Question 4</button>
-          <div class="panel">
-            <p>Answer 4</p>
-          </div> -->
+        -->
         </div>
       </div>
       <div class="col-lg d-flex justify-content-center text-center column">
