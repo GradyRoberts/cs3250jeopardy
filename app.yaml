@@ -15,10 +15,12 @@ entrypoint: serve frontcontroller.php
 #   script: src/allgames.php
 # - url: /newgame\.php
 #   script: src/newgame.php
-# - url: /styles/*
-#   static_dir: src/styles
-# - url: /img/*
-#   static_dir: src/img
+
+handlers:
+- url: /styles/*
+  static_dir: src/styles
+- url: /img/*
+  static_dir: src/img
 
 env_variables:
   CLOUDSQL_USER: root
