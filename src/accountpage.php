@@ -15,9 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       $statement = $pdo->prepare($query);
       $statement->bindValue(':email', $_COOKIE['user'], PDO::PARAM_STR);
       $statement->bindValue(':fname', $_POST['fname'], PDO::PARAM_STR);
-      $_COOKIE['fname'] = $_POST['fname'];
+      setcookie('fname', $_POST['fname'], time() + 3600);
       $statement->bindValue(':lname', $_POST['lname'], PDO::PARAM_STR);
-      $_COOKIE['lname'] = $_POST['lname'];
+      setcookie('lname', $_POST['lname'], time() + 3600);
       $statement->execute();
       $result = $statement->fetch();
       $statement->closeCursor();
@@ -40,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $statement->bindValue(':email', $_COOKIE['user'], PDO::PARAM_STR);
     $statement->execute();
     $statement->closeCursor();
+    header('Location: /allgames.php');
   }
 }
 
@@ -166,7 +167,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
               <option value="Free Response">Free Response</option>
             </select>
             <textarea rows="5" columns="20" name="answer" id="answer" placeholder="Select Answer Type First" required></textarea>
-            <input type="hidden" value="QuestionForm" />
+            <input type="hidden" name="form" value="QuestionForm" />
             <input type="submit" value="Submit Question" class="btn btn-secondary" />
           </form>
         </div>
