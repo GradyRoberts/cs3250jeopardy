@@ -58,17 +58,12 @@
         </div>
     </div>
 
-    <?php 
-    session_start(); 
-    if (! isset($_SESSION['username'])) {
-        header("Location: loginpage.php");
-    }
-    ?>
-
     <?php
     // Connect to the DB
     require('connectdb.php');
     ?>
+
+    <?php header('Location: https://cs3250-jeopardy.uk.r.appspot.com/homepage.php') ?>
 
     <?php
     global $pdo;
@@ -82,8 +77,6 @@
             $statement->execute();
             $result = $statement->fetch();
             $statement->closeCursor();
-            echo "Login Results" . "<br/>";
-            var_dump($result);
             if (!empty($result)) { //There was a user in the table with that email and password
                 echo "Login Successful" . "</br>";
                 session_start();
