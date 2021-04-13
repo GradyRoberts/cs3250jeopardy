@@ -1,7 +1,4 @@
 <?php
-
-header("Location: https://cs3250-jeopardy.uk.r.appspot.com/homepage.php");
-
 switch(@parse_url($_SERVER['REQUEST_URI'])['path']) {
     case '/homepage.php':
         require('src/homepage.php');
