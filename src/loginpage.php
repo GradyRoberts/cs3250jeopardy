@@ -69,29 +69,14 @@
 
 
     <?php 
-        // Connect to the DB
-        use PDO;
-        use PDOException;
+        require('connectdb.php');
 
-        $dbUser = getenv('CLOUDSQL_USER');
-        $dbPass = getenv('CLOUDSQL_PASSWORD');
-        $dbName = getenv('CLOUDSQL_DB');
-        $dbConn = getenv('CLOUDSQL_CONN_NAME');
+        global $pdo;
 
-        $dsn = "mysql:unix_socket=/cloudsql/${dbConn};dbname=${dbName}";
-        try {
-            $pdo = new PDO($dsn, $dbUser, $dbPass);
-        } catch (PDOException $e) {
-            echo "Can't connect to db<br/>";
-            echo $e->getMessage() . "<br/>";
-        }
-
-        echo "Connected to db<br/>";
-
-        // Pull some data to show connection is working
         $statement = $pdo->prepare('SELECT * FROM Users');
         $statement->execute();
-        $result = $statement->fetch();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
         var_dump($result);
     ?>
 
