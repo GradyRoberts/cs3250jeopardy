@@ -1,5 +1,5 @@
 <?php
-session_start();
+#session_start();
 if (!isset($_COOKIE['user'])) {
   header("Location: loginpage.php");
 }
@@ -11,6 +11,7 @@ global $pdo;
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   if ($_POST['form'] == "AccountForm") { //Change to the Account
     if ($_POST['button'] == "Update Account") {
+      echo "UPDATE";
       $query = "UPDATE Users SET fname = :fname, lname = :lname WHERE email = :email";
       $statement = $pdo->prepare($query);
       $statement->bindValue(':email', $_COOKIE['user'], PDO::PARAM_STR);
@@ -26,16 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       } else {
         $statement->bindValue(':lname', $_COOKIE['lname'], PDO::PARAM_STR);
       }
-      //if ($_POST['pwd'] != "") {
-      //$statement->bindValue(':pwd', $_POST['pwd'], PDO::PARAM_STR);
-      //$_SESSION['pwd'] = $_POST['pwd']
-      //} else {
-      //$statement->bindValue(':pwd', $_SESSION['pwd'], PDO::PARAM_STR);
-      //}
       $statement->execute();
       $result = $statement->fetch();
       $statement->closeCursor();
     } else if ($_POST['button'] == "Delete Account") {
+      echo "DELETE";
       $query = "DELETE FROM Users
       WHERE email = ':email";
       $statement = $pdo->prepare($query);
@@ -113,11 +109,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
               <label><b>Last Name:</b></label>
               <input type="text" name="lname" />
             </div>
+            <input type="hidden" name="form" value="AccountForm" />
+            <input type="submit" name=button value="Update Account" class="btn btn-secondary" />
+            <input type="submit" name=button value="Delete Account" class="btn btn-secondary" />
           </form>
-          <input type="hidden" name="form" value="AccountForm" />
-          <input type="submit" name=button value="Update Account" class="btn btn-secondary" />
-          <input type="submit" name=button value="Delete Account" class="btn btn-secondary" />
-
         </div>
       </div>
       <div class="col-lg d-flex justify-content-center text-center column">
