@@ -149,7 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
               $i++;
               $question = $row["question"];
               $answer = $row["answer"];
-              echo "<button class='accordion'>" . $Question . "</button>
+              echo "<button class='accordion'>" . $question . "</button>
               <div class= 'panel'>
                 <p>" . $answer . "</p>
               </div>";
@@ -159,44 +159,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           }
 
           ?>
-          <!--
-          <button class="accordion">Question 1</button>
-          <div class="panel">
-            <p>Answer 1</p>
-          </div>
-          <button class="accordion">Question 2</button>
-          <div class="panel">
-            <p>Answer 2</p>
-          </div>
-          <button class="accordion">Question 3</button>
-          <div class="panel">
-            <p>Answer 3</p>
-          </div>
-          <button class="accordion">Question 4</button>
-          <div class="panel">
-            <p>Answer 4</p>
-          </div> 
-        
-        "<div class='pnel-group' id='accordion" . $i . "'>
-                      <div class='panel panel-default'>
-                        <div class='panel-heading'>
-                          <h4 class='panel-title'>
-                            <a data-toggle='collapse' data-parent='#accordion" . $i . "' href='#collapse" . $i . "'>" . $question . " </a>
-                          </h4>
-                        </div>
-                        <div id='collapse" . $i . "' class='panel-collapse collapse'>
-                          <div class='panel-body'>" . $answer . "</div>
-                        </div>
-                      </div>
-                    </div>";
-        
-        
-        
-        
-        
-        
-        
-        -->
         </div>
       </div>
       <div class="col-lg d-flex justify-content-center text-center column">
