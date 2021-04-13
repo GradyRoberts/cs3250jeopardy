@@ -156,7 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
               $answer = $row["answer"];
               $id = $row["id"];
           ?>
-              <button class='accordion'><?php echo $question . " " . $id; ?> "</button>
+              <button class='accordion'><?php echo $question ?></button>
               <div class='panel'>
                 <p> <?php echo $answer; ?> ---- <a href="/delete.php?id=<?php echo $id; ?>">Delete</a></p>
               </div>
@@ -165,7 +165,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           } else {
             echo "You have not submitted any question!";
           }
-
           ?>
         </div>
       </div>
