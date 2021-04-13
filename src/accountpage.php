@@ -5,6 +5,8 @@
 <?php
 require('connectdb.php');
 global $pdo;
+global $fname;
+global $lname;
 //Form Handlers
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   if ($_POST['form'] == "AccountForm") { //Change to the Account
@@ -14,8 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       $statement->bindValue(':email', $_COOKIE['user'], PDO::PARAM_STR);
       $statement->bindValue(':fname', $_POST['fname'], PDO::PARAM_STR);
       setcookie('fname', $_POST['fname'], time() + 3600, '/');
+      $fname = $_POST['fname'];
       $statement->bindValue(':lname', $_POST['lname'], PDO::PARAM_STR);
       setcookie('lname', $_POST['lname'], time() + 3600, '/');
+      $lname = $_POST['lname'];
       $statement->execute();
       $result = $statement->fetch();
       $statement->closeCursor();
@@ -91,11 +95,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             </div>
             <div class="block">
               <label><b>First Name:</b></label>
-              <input type="text" name="fname" placeholder="<?php echo $_COOKIE['fname'] ?>" required />
+              <input type="text" name="fname" placeholder="<?php echo $fname ?>" required />
             </div>
             <div class=" block">
               <label><b>Last Name:</b></label>
-              <input type="text" name="lname" placeholder="<?php echo $_COOKIE['lname'] ?>" required />
+              <input type="text" name="lname" placeholder="<?php echo $lname ?>" required />
             </div>
             <input type="hidden" name="form" value="AccountForm" />
             <input type="submit" name=button value="Update Account" class="btn btn-secondary" />
