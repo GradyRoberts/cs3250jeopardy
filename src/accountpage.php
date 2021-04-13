@@ -140,8 +140,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           <h4>Your Questions</h4>
           <?php
 
-          $sql = "SELECT id, question,answer FROM Questions";
+          $sql = "SELECT id, question,answer FROM Questions WHERE email = :email";
           $stuff = $pdo->prepare($sql);
+          $stuff->bindValue(':email', $_COOKIE['user'], PDO::PARAM_STR);
           $stuff->execute();
           $i = 0;
           if (!empty($stuff)) {
@@ -149,10 +150,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
               $i++;
               $question = $row["question"];
               $answer = $row["answer"];
-              echo "<button class='accordion'>" . $question . "</button>
-              <div class= 'panel'>
-                <p>" . $answer . "</p>
-              </div>";
+          ?>
+              <button class='accordion'><?php echo $question; ?> "</button>
+              <div class='panel'>
+                <p> <?php echo $answer; ?> ---- <a href="delete.php?id=<?php echo $i; ?>">Delete</a></p>
+              </div>
+          <?php
             }
           } else {
             echo "You have not submitted any question!";
@@ -161,7 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           ?>
         </div>
       </div>
-      <div class="col-lg d-flex justify-content-center text-center column">
+      <div class=" col-lg d-flex justify-content-center text-center column">
         <div class="accountbox">
           <h4>Add Questions</h4>
           <form action="accountpage.php" method="post" style="margin:2px">
@@ -180,7 +183,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     </div>
   </div>
   <?php include("footer.html") ?>
-
 
 
   <script>
