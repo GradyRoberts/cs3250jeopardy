@@ -150,7 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
               $question = $row["question"];
               $answer = $row["answer"];
           ?>
-              <button class='accordion'><?php echo $question; ?> "</button>
+              <button class='accordion'><?php echo $question . " " . $i; ?> "</button>
               <div class='panel'>
                 <p> <?php echo $answer; ?> ---- <a href="delete.php?id=<?php echo $i; ?>">Delete</a></p>
               </div>
