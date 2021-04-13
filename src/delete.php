@@ -10,4 +10,9 @@ $query = "DELETE FROM Questions
 $statement = $pdo->prepare($query);
 $statement->bindValue(':id', $id, PDO::PARAM_INT);
 $statement->execute();
-$statement->closeCursor();
+
+if ($statement) {
+    header("location: /accountpage.php"); // redirects to all records page
+} else {
+    echo "Error Deleting Question";
+}
