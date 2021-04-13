@@ -58,6 +58,11 @@
         </div>
     </div>
 
+
+    <?php
+    header("Location: hompage.php");
+    ?>
+
     <?php
     // Connect to the DB
     require('connectdb.php');
