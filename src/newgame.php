@@ -149,8 +149,14 @@
       </div>
     </div>
   </div>
-
   <?php include("footer.html") ?>
+
+  <?php 
+    session_start(); 
+    if (! isset($_SESSION['user'])) {
+        header("Location: loginpage.php");
+    }
+  ?>
 
   <script>
     var acc = document.getElementsByClassName("accordion");

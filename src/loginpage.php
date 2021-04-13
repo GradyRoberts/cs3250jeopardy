@@ -58,26 +58,20 @@
         </div>
     </div>
 
+    <?php 
+    session_start(); 
+    if (! isset($_SESSION['username'])) {
+        header("Location: loginpage.php");
+    }
+    ?>
+
     <?php
     // Connect to the DB
-    use PDO;
-    use PDOException;
+    require('connectdb.php');
+    ?>
 
-    $dbUser = getenv('CLOUDSQL_USER');
-    $dbPass = getenv('CLOUDSQL_PASSWORD');
-    $dbName = getenv('CLOUDSQL_DB');
-    $dbConn = getenv('CLOUDSQL_CONN_NAME');
-
-    $dsn = "mysql:unix_socket=/cloudsql/${dbConn};dbname=${dbName}";
-    try {
-        $pdo = new PDO($dsn, $dbUser, $dbPass);
-    } catch (PDOException $e) {
-        echo "Can't connect to db<br/>";
-        echo $e->getMessage() . "<br/>";
-    }
-
-    echo "Connected to db<br/>";
-
+    <?php
+    global $pdo;
     //LOG IN HANDLER
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if (sizeof($_POST) == 2) { //Login Request
@@ -92,6 +86,7 @@
             var_dump($result);
             if (mysqli_num_rows($result) != 0) { //There was a user in the table with that email and password
                 echo "Login Successful" . "</br>";
+                session_start();
                 $_SESSION['user'] = $_POST['loginemail']; #Grab their first and last name from the DB and store them in cookies name into cookies for use on the next page
                 $_COOKIE['fname'] = $result['fname'];
                 $_COOKIE['lname'] = $result['lname'];
@@ -107,6 +102,7 @@
                 $statement->bindValue(':email', $_POST['loginemail'], PDO::PARAM_STR);
                 $statement->execute();
                 $result = $statement->fetch();
+                $statement->closeCursor();
                 if (mysqli_num_rows($result) == 0) { //There is no user in the table with that email 
                     $query = "INSERT INTO Users (email, fname, lname, password) VALUES (:email, :fname, :lname, :password)"; //Create User
                     $statement = $pdo->prepare($query);
@@ -115,6 +111,12 @@
                     $statement->bindValue(':lname', $_POST['lname'], PDO::PARAM_STR);
                     $statement->bindValue(':password', $_POST['pwd1'], PDO::PARAM_STR);
                     $statement->execute();
+                    $statement->closeCursor();
+                    
+                    session_start();
+                    $_SESSION['user'] = $_POST['loginemail']; #Grab their first and last name from the DB and store them in cookies name into cookies for use on the next page
+                    $_COOKIE['fname'] = $result['fname'];
+                    $_COOKIE['lname'] = $result['lname'];
                     echo "Account Created" . "</br>";
                     header('Location: homepage.php');  #Redirects to home page
                 } else {
