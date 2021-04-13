@@ -14,7 +14,7 @@
 // session_set_save_handler($handler, true);
 // session_save_path('sessions');
 
-switch(@parse_url($_SERVER['REQUEST_URI'])['path']) {
+switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
     case '/homepage.php':
         require('src/homepage.php');
         break;
@@ -30,8 +30,10 @@ switch(@parse_url($_SERVER['REQUEST_URI'])['path']) {
     case '/logout.php':
         require('src/logout.php');
         break;
+    case '/delete.php':
+        require('src/delete.php');
+        break;
     default:
         http_response_code(404);
         exit('Not Found');
 }
-?>
