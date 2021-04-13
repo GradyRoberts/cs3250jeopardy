@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
               <label><b>Last Name:</b></label>
               <input type="text" name="lname" placeholder="<?php echo $_COOKIE['lname'] ?>" required />
             </div>
-            <input type=" hidden" name="form" value="AccountForm" />
+            <input type="hidden" name="form" value="AccountForm" />
             <input type="submit" name=button value="Update Account" class="btn btn-secondary" />
             <input type="submit" name=button value="Delete Account" class="btn btn-secondary" />
           </form>
