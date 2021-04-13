@@ -15,6 +15,7 @@
 // session_save_path('sessions');
 
 switch (@parse_url($_SERVER['REQUEST_URI'])['path']) {
+    case '/':
     case '/homepage.php':
         require('src/homepage.php');
         break;
