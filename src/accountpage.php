@@ -40,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $statement->bindValue(':email', $_COOKIE['user'], PDO::PARAM_STR);
     $statement->execute();
     $statement->closeCursor();
-    header('Location: /allgames.php');
   }
 }
 
