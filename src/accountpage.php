@@ -141,7 +141,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           <?php
 
           $sql = "SELECT id, question,answer FROM Questions";
-          $result = $con->query($sql);
+          $statement = $pdo->prepare($query);
+          $statement->execute();
+          $result = $statement->fetch();
+          $statement->closeCursor();
 
           $i = 0;
           if ($result->num_rows > 0) {
@@ -150,23 +153,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
               $i++;
               $question = $row["question"];
               $answer = $row["answer"];
-              echo "
-            <div class='pnel-group' id='accordion" . $i . "'>
-                <div class='panel panel-default'>
-                    <div class='panel-heading'>
-                        <h4 class='panel-title'>
-                            <a data-toggle='collapse' data-parent='#accordion" . $i . "' 
-                                    href='#collapse" . $i . "'>"
-                . $question . "
-                            </a>
-                        </h4>
-                    </div>
-                    <div id='collapse" . $i . "' class='panel-collapse collapse'>
-                        <div class='panel-body'>" . $answer . "</div>
-                    </div>
-                </div>
-            </div>
-        ";
+              echo "<div class='pnel-group' id='accordion" . $i . "'>
+                      <div class='panel panel-default'>
+                        <div class='panel-heading'>
+                          <h4 class='panel-title'>
+                            <a data-toggle='collapse' data-parent='#accordion" . $i . "' href='#collapse" . $i . "'>" . $question . " </a>
+                          </h4>
+                        </div>
+                        <div id='collapse" . $i . "' class='panel-collapse collapse'>
+                          <div class='panel-body'>" . $answer . "</div>
+                        </div>
+                      </div>
+                    </div>";
             }
           } else {
             echo "You have not submitted any question!";
