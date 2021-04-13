@@ -25,14 +25,17 @@
     <link rel="stylesheet" href="styles/home.css" />
 </head>
 
-<?php
-    header("HTTP/1.1 301 Moved Permanently");
-    header("Location: homepage.php");
-    header("Connection: close");
-?>
+
 
 <body class="main-content">
 
+<?php
+    echo "this code runs";
+    header("HTTP/1.1 301 Moved Permanently");
+    header("Location: homepage.php");
+    header("Connection: close");
+    echo "this code runs 2";
+?>
 
     <?php session_start(); ?>
 
