@@ -141,11 +141,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           <?php
 
           $sql = "SELECT id, question,answer FROM Questions";
-          $statement = $pdo->prepare($sql);
-          $statement->execute();
+          $stuff = $pdo->prepare($sql);
+          $stuff->execute();
           $i = 0;
-          if (!empty($statement)) {
-            while ($row = $statement->fetch()) {
+          if (!empty($stuff)) {
+            while ($row = $stuff->fetch()) {
               $i++;
               $question = $row["question"];
               $answer = $row["answer"];
@@ -162,11 +162,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                       </div>
                     </div>";
             }
-            $statement->closeCursor();
           } else {
             echo "You have not submitted any question!";
           }
-
           ?>
           <!--
           <button class="accordion">Question 1</button>
