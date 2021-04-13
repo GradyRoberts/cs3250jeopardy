@@ -1,23 +1,24 @@
-# Use the PHP 5.5 runtime so the routing is easier
-runtime: php55
+runtime: php73
 
-handlers:
-- url: /
-  script: src/loginpage.php
-- url: /loginpage\.php
-  script: src/loginpage.php
-- url: /homepage\.php
-  script: src/homepage.php
-- url: /accountpage\.php
-  script: src/accountpage.php
-- url: /allgames\.php
-  script: src/allgames.php
-- url: /newgame\.php
-  script: src/newgame.php
-- url: /styles/*
-  static_dir: src/styles
-- url: /img/*
-  static_dir: src/img
+entrypoint: serve frontcontroller.php
+
+# handlers:
+# - url: /
+#   script: src/loginpage.php
+# - url: /loginpage\.php
+#   script: src/loginpage.php
+# - url: /homepage\.php
+#   script: src/homepage.php
+# - url: /accountpage\.php
+#   script: src/accountpage.php
+# - url: /allgames\.php
+#   script: src/allgames.php
+# - url: /newgame\.php
+#   script: src/newgame.php
+# - url: /styles/*
+#   static_dir: src/styles
+# - url: /img/*
+#   static_dir: src/img
 
 env_variables:
   CLOUDSQL_USER: root
