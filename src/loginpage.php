@@ -63,7 +63,10 @@
     require('connectdb.php');
     ?>
 
-    <?php header('Location: https://cs3250-jeopardy.uk.r.appspot.com/homepage.php') ?>
+    <?php 
+    header('HTTP/1.1 301 Moved Permanently');
+    header('Location: https://cs3250-jeopardy.uk.r.appspot.com/homepage.php');
+    ?>
 
     <?php
     global $pdo;
