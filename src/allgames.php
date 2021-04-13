@@ -1,3 +1,9 @@
+<?php 
+    session_start(); 
+    if (! isset($_SESSION['user'])) {
+        header("Location: /loginpage.php");
+    }
+?>
 <!DOCTYPE html>
 <html>
 
@@ -100,13 +106,6 @@
   </div>
   <?php include("footer.html") ?>
   
-  <?php 
-    session_start(); 
-    if (! isset($_SESSION['user'])) {
-        header("Location: loginpage.php");
-    }
-  ?>
-
   <script>
     function answerSelect() {
       var str = document.getElementById("answerselect").value

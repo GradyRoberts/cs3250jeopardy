@@ -1,7 +1,9 @@
-<!--#session_start();
-//if (!isset($_COOKIE['user'])) {
-  //header("Location: loginpage.php");
-//}-->
+<?php
+session_start();
+if (!isset($_SESSION['user'])) {
+  header("Location: /loginpage.php");
+}
+?>
 <?php
 require('connectdb.php');
 global $pdo;
