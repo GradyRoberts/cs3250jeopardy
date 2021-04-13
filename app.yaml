@@ -27,3 +27,4 @@ env_variables:
   CLOUDSQL_DB: jeopardydb
   CLOUDSQL_PASSWORD: admin
   CLOUDSQL_CONN_NAME: cs3250-jeopardy:us-east4:jeopardydb
+  GOOGLE_CLOUD_PROJECT: cs3250-jeopardy
