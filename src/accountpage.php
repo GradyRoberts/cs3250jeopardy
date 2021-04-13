@@ -16,21 +16,21 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       $statement->bindValue(':email', "daniel.p.collins@me.com", PDO::PARAM_STR);
       if ($_POST['fname'] != "") {
         $statement->bindValue(':fname', $_POST['fname'], PDO::PARAM_STR);
-        $_SESSION['fname'] = $_POST['fname']
+        $_SESSION['fname'] = $_POST['fname'];
       } else {
         $statement->bindValue(':fname', $_SESSION['fname'], PDO::PARAM_STR);
       }
       if ($_POST['lname'] != "") {
-        $statement->bindValue(':lname', $_POST['lname'], PDO::PARAM_STR);        
-        $_SESSION['lname'] = $_POST['lname']
+        $statement->bindValue(':lname', $_POST['lname'], PDO::PARAM_STR);
+        $_SESSION['lname'] = $_POST['lname'];
       } else {
         $statement->bindValue(':lname', $_SESSION['lname'], PDO::PARAM_STR);
       }
       //if ($_POST['pwd'] != "") {
-        //$statement->bindValue(':pwd', $_POST['pwd'], PDO::PARAM_STR);
-        //$_SESSION['pwd'] = $_POST['pwd']
+      //$statement->bindValue(':pwd', $_POST['pwd'], PDO::PARAM_STR);
+      //$_SESSION['pwd'] = $_POST['pwd']
       //} else {
-        //$statement->bindValue(':pwd', $_SESSION['pwd'], PDO::PARAM_STR);
+      //$statement->bindValue(':pwd', $_SESSION['pwd'], PDO::PARAM_STR);
       //}
       $statement->execute();
       $result = $statement->fetch();
@@ -45,10 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       $statement->closeCursor();
       header('Location: /logout.php');  #Redirects to home page
     }
-  } else if ($_POST['form'] == "AccountForm") { //Change to the Questions Form
-
-  } else {
-    echo "Passwords Do Not Match" . "</br>";
+  } else if ($_POST['form'] == "QuestionForm") { //Change to the Questions Form
   }
 }
 
@@ -102,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             </div>
             <div class="block">
               <label><b>Password:</b></label>
-              <input type="text" name="pwd" readonly="readonly"/>
+              <input type="text" name="pwd" readonly="readonly" />
             </div>
             <div class="block">
               <label><b>First Name:</b></label>
