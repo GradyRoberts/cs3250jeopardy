@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/vendor/autoload.php';
+
 use Google\Cloud\Firestore\FirestoreClient;
 
 $projectId = getenv('GOOGLE_CLOUD_PROJECT');
