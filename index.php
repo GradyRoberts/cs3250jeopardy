@@ -12,6 +12,8 @@ switch(@parse_url($_SERVER['REQUEST_URI'])['path']) {
     case '/allgames.php':
         require('src/allgames.php');
         break;
+    case '/logout.php':
+        require('src/logout.php');
     default:
         http_response_code(404);
         exit('Not Found');
