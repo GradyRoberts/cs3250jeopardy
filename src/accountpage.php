@@ -11,29 +11,19 @@ global $pdo;
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   if ($_POST['form'] == "AccountForm") { //Change to the Account
     if ($_POST['button'] == "Update Account") {
-      echo "UPDATE";
-      $query = "UPDATE Users SET fname = :fname, lname = :lname WHERE email = :email";
+      $query = 'UPDATE Users SET fname = :fname, lname = :lname WHERE email = :email';
       $statement = $pdo->prepare($query);
       $statement->bindValue(':email', $_COOKIE['user'], PDO::PARAM_STR);
-      if ($_POST['fname'] != "") {
-        $statement->bindValue(':fname', $_POST['fname'], PDO::PARAM_STR);
-        $_COOKIE['fname'] = $_POST['fname'];
-      } else {
-        $statement->bindValue(':fname', $_COOKIE['fname'], PDO::PARAM_STR);
-      }
-      if ($_POST['lname'] != "") {
-        $statement->bindValue(':lname', $_POST['lname'], PDO::PARAM_STR);
-        $_COOKIE['lname'] = $_POST['lname'];
-      } else {
-        $statement->bindValue(':lname', $_COOKIE['lname'], PDO::PARAM_STR);
-      }
+      $statement->bindValue(':fname', $_POST['fname'], PDO::PARAM_STR);
+      $_COOKIE['fname'] = $_POST['fname'];
+      $statement->bindValue(':lname', $_POST['lname'], PDO::PARAM_STR);
+      $_COOKIE['lname'] = $_POST['lname'];
       $statement->execute();
       $result = $statement->fetch();
       $statement->closeCursor();
     } else if ($_POST['button'] == "Delete Account") {
-      echo "DELETE";
-      $query = "DELETE FROM Users
-      WHERE email = ':email";
+      $query = 'DELETE FROM Users
+      WHERE email = :email';
       $statement = $pdo->prepare($query);
       $statement->bindValue(':email', $_COOKIE['user'], PDO::PARAM_STR);
       $statement->execute();
@@ -42,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       header('Location: /logout.php');  #Redirects to home page
     }
   } else if ($_POST['form'] == "QuestionForm") { //Change to the Questions Form
-    $query = "INSERT INTO Questions (question, atype, answer, email) VALUES (:question, :atype, :answer, :email)"; //Create User
+    $query = 'INSERT INTO Questions (question, atype, answer, email) VALUES (:question, :atype, :answer, :email)'; //Create User
     $statement = $pdo->prepare($query);
     $statement->bindValue(':question', $_POST['question'], PDO::PARAM_STR);
     $statement->bindValue(':atype', $_POST['atype'], PDO::PARAM_STR);
@@ -99,15 +89,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           <form action="accountpage.php" method="post" style="margin:2px">
             <div class="block">
               <label><b>Email:</b></label>
-              <input type="text" placeholder="stuff@stuff.com" readonly="readonly" />
+              <input type="text" placeholder=<?php echo $_COOKIE['user'] ?> readonly="readonly" />
             </div>
             <div class="block">
               <label><b>First Name:</b></label>
-              <input type="text" name="fname" />
+              <input type="text" name="fname" placeholder=<?php echo $_COOKIE['fname'] ?> />
             </div>
             <div class=" block">
               <label><b>Last Name:</b></label>
-              <input type="text" name="lname" />
+              <input type="text" name="lname" placeholder=<?php echo $_COOKIE['lname'] ?> />
             </div>
             <input type="hidden" name="form" value="AccountForm" />
             <input type="submit" name=button value="Update Account" class="btn btn-secondary" />
