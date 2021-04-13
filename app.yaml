@@ -19,6 +19,8 @@ handlers:
   static_dir: src/styles
 - url: /img/*
   static_dir: src/img
+- url: /favicon.ico
+  static_dir: src/img
 - url: /.*
   script: auto
 
