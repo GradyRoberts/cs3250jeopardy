@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if ($_POST["pwd1"] == $_POST["pwd2"]) { //If password and confirmed passwords match
             $query = "SELECT * FROM Users WHERE email = :email";
             $statement = $pdo->prepare($query);
-            $statement->bindValue(':email', $_POST['loginemail'], PDO::PARAM_STR);
+            $statement->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
             $statement->execute();
             $result = $statement->fetch();
             $statement->closeCursor();
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $statement->closeCursor();
 
                 //session_start();
-                //$_SESSION['user'] = $_POST['loginemail']; #Grab their first and last name from the DB and store them in cookies name into cookies for use on the next page
+                //$_SESSION['user'] = $_POST['email']; #Grab their first and last name from the DB and store them in cookies name into cookies for use on the next page
                 //$_SESSION['fname'] = $_POST['fname'];
                 //$_SESSION['lname'] = $_POST['lname'];
                 setcookie('user', $_POST['loginemail'], time() + 3600);
