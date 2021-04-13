@@ -17,8 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $_SESSION['fname'] = $_result['fname'];
             $_SESSION['lname'] = $_result['lname'];
             setcookie('user', $_POST['loginemail'], time() + 3600);
-            setcookie('fname', $_result['fname'], time() + 3600);
-            setcookie('lname', $_result['lname'], time() + 3600);
+            setcookie('fname', $result['fname'], time() + 3600);
+            setcookie('lname', $result['lname'], time() + 3600);
             header('Location: https://cs3250-jeopardy.uk.r.appspot.com/homepage.php');  #Redirects to home page
         } else {
             echo "Incorrect Username or Password" . "</br>";
