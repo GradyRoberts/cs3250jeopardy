@@ -145,16 +145,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           $stuff = $pdo->prepare($sql);
           $stuff->bindValue(':email', $_COOKIE['user'], PDO::PARAM_STR);
           $stuff->execute();
-          $i = 0;
           if (!empty($stuff)) {
             while ($row = $stuff->fetch()) {
-              $i++;
               $question = $row["question"];
               $answer = $row["answer"];
+              $id = $row["id"];
           ?>
-              <button class='accordion'><?php echo $question . " " . $i; ?> "</button>
+              <button class='accordion'><?php echo $question . " " . $id; ?> "</button>
               <div class='panel'>
-                <p> <?php echo $answer; ?> ---- <a href="/delete.php?id=<?php echo $i; ?>">Delete</a></p>
+                <p> <?php echo $answer; ?> ---- <a href="/delete.php?id=<?php echo $id; ?>">Delete</a></p>
               </div>
           <?php
             }
