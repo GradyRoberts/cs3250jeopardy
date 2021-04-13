@@ -79,8 +79,8 @@
                 echo "Login Successful" . "</br>";
                 session_start();
                 $_SESSION['user'] = $_POST['loginemail']; #Grab their first and last name from the DB and store them in cookies name into cookies for use on the next page
-                $_COOKIE['fname'] = $result['fname'];
-                $_COOKIE['lname'] = $result['lname'];
+                setcookie('fname', $result['fname'], time()+3600);
+                setcookie('lname', $result['lname'], time()+3600);
                 header('Location: https://cs3250-jeopardy.uk.r.appspot.com/homepage.php');  #Redirects to home page
             } else {
                 echo "Incorrect Username or Password" . "</br>";
