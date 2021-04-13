@@ -1,5 +1,5 @@
+<?php header("Location: https://cs3250-jeopardy.uk.r.appspot.com/homepage.php", true, 303);?>
 <html>
-
 <head>
     <meta charset="UTF-8">
 
@@ -28,10 +28,6 @@
 
 
 <body class="main-content">
-
-<?php
-    header("Location: https://cs3250-jeopardy.uk.r.appspot.com/homepage.php", true, 303);
-?>
 
     <?php session_start(); ?>
 
