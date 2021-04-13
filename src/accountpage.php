@@ -7,24 +7,24 @@ if (!isset($_SESSION['user'])) {
 <?php
 require('connectdb.php');
 global $pdo;
-//LOG IN HANDLER
+//Form Handlers
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   if ($_POST['form'] == "AccountForm") { //Change to the Account
     if ($_POST['button'] == "Update Account") {
       $query = "UPDATE Users SET fname = :fname, lname = :lname WHERE email = :email";
       $statement = $pdo->prepare($query);
-      $statement->bindValue(':email', "daniel.p.collins@me.com", PDO::PARAM_STR);
+      $statement->bindValue(':email', $_COOKIE['user'], PDO::PARAM_STR);
       if ($_POST['fname'] != "") {
         $statement->bindValue(':fname', $_POST['fname'], PDO::PARAM_STR);
         $_SESSION['fname'] = $_POST['fname'];
       } else {
-        $statement->bindValue(':fname', $_SESSION['fname'], PDO::PARAM_STR);
+        $statement->bindValue(':fname', $_COOKIE['fname'], PDO::PARAM_STR);
       }
       if ($_POST['lname'] != "") {
         $statement->bindValue(':lname', $_POST['lname'], PDO::PARAM_STR);
         $_SESSION['lname'] = $_POST['lname'];
       } else {
-        $statement->bindValue(':lname', $_SESSION['lname'], PDO::PARAM_STR);
+        $statement->bindValue(':lname', $_COOKIE['lname'], PDO::PARAM_STR);
       }
       //if ($_POST['pwd'] != "") {
       //$statement->bindValue(':pwd', $_POST['pwd'], PDO::PARAM_STR);
@@ -39,13 +39,21 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       $query = "DELETE FROM Users
       WHERE email = ':email";
       $statement = $pdo->prepare($query);
-      $statement->bindValue(':email', "daniel.p.collins@me.com", PDO::PARAM_STR);
+      $statement->bindValue(':email', $_COOKIE['user'], PDO::PARAM_STR);
       $statement->execute();
       $result = $statement->fetch();
       $statement->closeCursor();
       header('Location: /logout.php');  #Redirects to home page
     }
   } else if ($_POST['form'] == "QuestionForm") { //Change to the Questions Form
+    $query = "INSERT INTO Questions (question, atype, answer, email) VALUES (:question, :atype, :answer, :email)"; //Create User
+    $statement = $pdo->prepare($query);
+    $statement->bindValue(':question', $_POST['question'], PDO::PARAM_STR);
+    $statement->bindValue(':atype', $_POST['atype'], PDO::PARAM_STR);
+    $statement->bindValue(':answer', $_POST['answer'], PDO::PARAM_STR);
+    $statement->bindValue(':email', $_COOKIE['user'], PDO::PARAM_STR);
+    $statement->execute();
+    $statement->closeCursor();
   }
 }
 
@@ -171,7 +179,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
           <h4>Add Questions</h4>
           <form action="accountpage.php" method="post" style="margin:2px">
             <input type="text" name="question" id="question" placeholder="Question" required /> <br />
-            <select id="answerselect" class="answerselect" name="answerselect" onchange="answerSelect()" required>
+            <select id="answerselect" class="answerselect" name="atype" onchange="answerSelect()" required>
               <option value="" disabled selected>Select Answer Type</option>
               <option value="Multiple Choice">Multiple Choice</option>
               <option value="Free Response">Free Response</option>
