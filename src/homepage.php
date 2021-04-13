@@ -1,8 +1,11 @@
 <?php 
-    session_start(); 
-    if (! isset($_SESSION['user'])) {
-        header("Location: /loginpage.php");
-    }
+require('isLocalhost.php');
+if (isLocalhost()) {
+  session_start(); 
+  if (! isset($_SESSION['user'])) {
+      header("Location: /loginpage.php");
+  }
+}
 ?>
 <!DOCTYPE html>
 <html>

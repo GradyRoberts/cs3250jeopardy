@@ -1,8 +1,20 @@
 <?php
 require('connectdb.php');
+require('isLocalhost.php');
 global $pdo;
+
 //LOG IN HANDLER
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if (isLocalhost()) {
+        if (sizeof($_POST) == 2) { //Login
+            if ($_POST['loginpwd'] == 'ABC') { // example info for localhost
+                session_start();
+                $_SESSION['user'] = $_POST['loginemail'];
+            } else {
+                echo "Incorrect Username or Password" . "</br>";
+            }
+        }
+    }
     if (sizeof($_POST) == 2) { //Login Request
         $query = "SELECT * FROM Users WHERE email = :email AND password = :password";
         $statement = $pdo->prepare($query);
@@ -12,8 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $result = $statement->fetch();
         $statement->closeCursor();
         if (!empty($result)) { //There was a user in the table with that email and password
-            session_start();
-            $_SESSION['user'] = $_POST['loginemail'];
             setcookie('user', $_POST['loginemail'], time() + 3600, '/');
             setcookie('fname', $result['fname'], time() + 3600, '/');
             setcookie('lname', $result['lname'], time() + 3600, '/');
@@ -39,8 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $statement->execute();
                 $statement->closeCursor();
 
-                session_start();
-                $_SESSION['user'] = $_POST['loginemail'];
+                // session_start();
+                // $_SESSION['user'] = $_POST['loginemail'];
                 setcookie('user', $_POST['email'], time() + 3600, '/');
                 setcookie('fname', $_POST['fname'], time() + 3600, '/');
                 setcookie('lname', $_POST['lname'], time() + 3600, '/');
