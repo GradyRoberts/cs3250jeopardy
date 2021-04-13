@@ -1,16 +1,18 @@
 <?php
 
-use Google\Cloud\Firestore\FirestoreClient;
+// require('vendor/autoload.php');
 
-$projectId = getenv('GOOGLE_CLOUD_PROJECT');
-$firestore = new FirestoreClient([
-    'projectId' => $projectId,
-]);
+// use Google\Cloud\Firestore\FirestoreClient;
 
-$handler = $firestore->sessionHandler(['gcLimit' => 500]);
+// $projectId = getenv('GOOGLE_CLOUD_PROJECT');
+// $firestore = new FirestoreClient([
+//     'projectId' => $projectId,
+// ]);
 
-session_set_save_handler($handler, true);
-session_save_path('sessions');
+// $handler = $firestore->sessionHandler(['gcLimit' => 500]);
+
+// session_set_save_handler($handler, true);
+// session_save_path('sessions');
 
 switch(@parse_url($_SERVER['REQUEST_URI'])['path']) {
     case '/homepage.php':
